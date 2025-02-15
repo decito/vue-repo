@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perspective</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../public/styles/partials/perspective.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+    />
+  </head>
+
+  <body class="w-full h-full box-border overflow-hidden bg-gray-800">
+    <div id="app">
+      <header
+        class="
+          bg-gray-100
+          h-12
+          rounded-b-lg
+          flex
+          items-center
+          justify-between
+          px-8
+          mb-6
+          text-gray-800
+          font-bold
+          z-20
+        "
+      >
+        <h1 class="text-xl">Helicopter, helicopter</h1>
+        <nav class="flex">
+          <a href="index.html">Home</a>
+        </nav>
+      </header>
+
+      <main class="flex justify-around items-center my-0 mx-auto text-lg w-2/5">
+        <section class="w-1/2 z-10">
+          <div class="settings-container text-white">
+            <label class="block">perspective: {{ perspective }}px;</label>
+            <input
+              v-model="perspective"
+              class="block mb-3 w-64"
+              type="range"
+              min="0"
+              max="999"
+            />
+
+            <label class="block">rotateX: {{ rotateX }}deg; </label>
+            <input
+              v-model="rotateX"
+              class="block mb-3 w-64"
+              type="range"
+              min="-180"
+              max="180"
+            />
+
+            <label class="block">rotateY: {{ rotateY }}deg; </label>
+            <input
+              v-model="rotateY"
+              class="block mb-3 w-64"
+              type="range"
+              min="-180"
+              max="180"
+            />
+
+            <label class="block">rotateZ: {{ rotateZ }}deg; </label>
+            <input
+              v-model="rotateZ"
+              class="block mb-3 w-64"
+              type="range"
+              min="-180"
+              max="180"
+            />
+
+            <div class="flex items-start gap-8">
+              <button
+                class="
+                  flex
+                  justify-center
+                  items-center
+                  w-28
+                  h-12
+                  rounded-xl
+                  transition-colors
+                  bg-red-900
+                  hover:bg-red-700
+                "
+                type="button"
+                @click.prevent="reset"
+              >
+                Reset
+              </button>
+              <button
+                class="
+                  flex
+                  justify-center
+                  items-center
+                  w-28
+                  h-12
+                  rounded-xl
+                  transition-colors
+                  bg-green-900
+                  hover:bg-green-700
+                "
+                type="button"
+                @click.prevent="copy"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="output">
+          <div class="p-14 border-4 border-gray-900">
+            <div class="bg-gray-100 w-40 h-40" :style="box"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="../../public/script/perspective.js"></script>
+  </body>
+</html>
